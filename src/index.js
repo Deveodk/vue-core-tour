@@ -28,6 +28,9 @@ function plugin (Vue, options) {
         if (config.forceRun) {
             intro.setOptions(config)
             setTimeout(() => {
+                if(window.innerWidth < 768){
+                    return
+                }
                 intro.start()
             }, config.tourTimeout)
             return
@@ -38,6 +41,9 @@ function plugin (Vue, options) {
             options.axios.post(options.baseURL + '/core/tours', { slug: slug })
             intro.setOptions(config)
             setTimeout(() => {
+                if(window.innerWidth < 768){
+                    return
+                }
                 intro.start()
             }, config.tourTimeout)
         })
