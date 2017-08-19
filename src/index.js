@@ -1,6 +1,5 @@
 import introJs from 'intro.js'
 import utils from './libs/utils'
-import css from 'intro.js/introjs.css'
 
 function plugin (Vue, options) {
     const defaultOptions = {
@@ -12,7 +11,8 @@ function plugin (Vue, options) {
         skipLabel: 'Close',
         doneLabel: 'Okay',
         forceRun: false,
-        baseURL: 'localhost:8000'
+        baseURL: 'localhost:8000',
+        tourTimeout: 500
     }
 
     options = utils.extend(defaultOptions, [options || {}])
@@ -27,17 +27,19 @@ function plugin (Vue, options) {
 
         if (config.forceRun) {
             intro.setOptions(config)
-            intro.start()
+            setTimeout(() => {
+                intro.start()
+            }, config.tourTimeout)
             return
         }
 
         options.axios.get(options.baseURL + '/core/tours/' + slug).then(() => {
         }).catch(() => {
             options.axios.post(options.baseURL + '/core/tours', { slug: slug })
-
             intro.setOptions(config)
-
-            intro.start()
+            setTimeout(() => {
+                intro.start()
+            }, config.tourTimeout)
         })
     }
 }
