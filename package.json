@@ -1,6 +1,6 @@
 {
   "name": "@deveodk/vue-core-tour",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tour plugin for deveo core based on intro js",
   "author": "Jason Kelly <jk@deveo.dk>",
   "main": "dist/@deveodk/vue-core-tour.common.js",

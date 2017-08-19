@@ -53,6 +53,5 @@ export default plugin
 const version = '__VERSION__'
 // Export all components too
 export {
-  version,
-  css
+  version
 }
